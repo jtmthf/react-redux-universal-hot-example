@@ -97,7 +97,7 @@
       }
     },
     "build:api": {
-      "command": "babel api --out-dir bin/api --source-maps",
+      "command": "webpack --verbose --colors --display-error-details --config webpack/api.config.js",
       "env": {
         "NODE_ENV": "production"
       }
