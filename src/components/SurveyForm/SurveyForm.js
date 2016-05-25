@@ -1,28 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import {reduxForm} from 'redux-form';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import surveyValidation from './surveyValidation';
-import * as surveyActions from 'redux/modules/survey';
 
-function asyncValidate(data, dispatch, {isValidEmail}) {
-  if (!data.email) {
-    return Promise.resolve({});
-  }
-  return isValidEmail(data);
-}
-@connect(() => ({}),
-  dispatch => bindActionCreators(surveyActions, dispatch)
-)
-@reduxForm({
-  form: 'survey',
-  fields: ['name', 'email', 'occupation', 'currentlyEmployed', 'sex'],
-  validate: surveyValidation,
-  asyncValidate,
-  asyncBlurFields: ['email']
-})
-export default
-class SurveyForm extends Component {
+export default class SurveyForm extends Component {
   static propTypes = {
     active: PropTypes.string,
     asyncValidating: PropTypes.bool.isRequired,

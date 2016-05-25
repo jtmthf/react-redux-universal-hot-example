@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Helmet from 'react-helmet';
-import { MiniInfoBar } from 'components';
+import { MiniInfoBar } from 'containers';
 
 export default class About extends Component {
 
