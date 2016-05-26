@@ -4,14 +4,15 @@ import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
     Chat,
-    Home,
     Widgets,
-    About,
     Login,
     LoginSuccess,
-    Survey,
-    NotFound,
+    Survey
   } from 'containers';
+import {
+  About,
+  Home,
+  NotFound } from 'components';
 
 export default (store) => {
   const requireLogin = (nextState, replace, cb) => {
