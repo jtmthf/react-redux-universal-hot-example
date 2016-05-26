@@ -1,4 +1,4 @@
-import timeout from 'utils/timeout';
+import timeout from '../../utils/timeout';
 
 export default function survey(req) {
   return new Promise(async (resolve, reject) => {

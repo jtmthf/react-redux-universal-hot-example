@@ -1,4 +1,4 @@
-import timeout from 'utils/timeout';
+import timeout from '../../utils/timeout';
 
 const initialWidgets = [
   {id: 1, color: 'Red', sprocketCount: 7, owner: 'John'},
