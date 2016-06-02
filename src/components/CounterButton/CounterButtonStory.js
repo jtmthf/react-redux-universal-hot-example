@@ -20,4 +20,4 @@ storiesOf('CounterButton')
       {story()}
     </Provider>
   ))
-  .add('button', () => (<CounterButton multireducerKey="counter1"/>));
+  .add('button', () => (<CounterButton multireducerKey="counter1" />));

@@ -1,26 +1,23 @@
 const path = require('path');
 
 module.exports = {
-  locals: () => {
+  locals: () => ({
     // Return custom template variables here.
-    return {};
-  },
+  }),
 
-  fileMapTokens: () => {
+  fileMapTokens: () => ({
     // Return custom tokens to be replaced in your files
-    return {
-      __token__: () => {
-        // logic to determine value goes here
-        return 'value';
-      }
-    };
-  },
+    __token__: () => (
+      // logic to determine value goes here
+      'value'
+    )
+  }),
 
   // Should probably never need to be overriden
 
-  filesPath: () => {
-    return path.join(this.path, 'files');
-  },
+  filesPath: () => (
+    path.join(this.path, 'files')
+  ),
 
   beforeInstall: () => {},
   afterInstall: () => {}

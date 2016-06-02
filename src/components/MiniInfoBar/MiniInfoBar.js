@@ -1,19 +1,16 @@
-import React, {Component, PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 
-export default class MiniInfoBar extends Component {
-  static propTypes = {
-    time: PropTypes.number
-  }
+const MiniInfoBar = ({ time }) => (
+  <div className="mini-info-bar">
+    The info bar was last loaded at
+    {' '}
+    <span>{time && new Date(time).toString()}</span>
+  </div>
+);
 
-  render() {
-    const {time} = this.props;
-    return (
-      <div className="mini-info-bar">
-        The info bar was last loaded at
-        {' '}
-        <span>{time && new Date(time).toString()}</span>
-      </div>
-    );
-  }
-}
+MiniInfoBar.propTypes = {
+  time: PropTypes.number
+};
+
+export default MiniInfoBar;

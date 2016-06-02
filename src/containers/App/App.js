@@ -6,7 +6,7 @@ import { asyncConnect } from 'redux-async-connect';
 import { App } from 'components';
 
 export default asyncConnect([{
-  promise: ({store: {dispatch, getState}}) => {
+  promise: ({ store: { dispatch, getState } }) => {
     const promises = [];
 
     if (!isInfoLoaded(getState())) {
@@ -19,6 +19,6 @@ export default asyncConnect([{
     return Promise.all(promises);
   }
 }])(connect(
-  state => ({user: state.auth.user}),
-  {logout, pushState: push}
+  state => ({ user: state.auth.user }),
+  { logout, pushState: push }
 )(App));

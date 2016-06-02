@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class CounterButton extends Component {
   static propTypes = {
@@ -12,8 +12,8 @@ export default class CounterButton extends Component {
   }
 
   render() {
-    const {count, increment} = this.props; // eslint-disable-line no-shadow
-    let {className} = this.props;
+    const { count, increment } = this.props; // eslint-disable-line no-shadow
+    let { className } = this.props;
     className += ' btn btn-default';
     return (
       <button className={className} onClick={increment}>

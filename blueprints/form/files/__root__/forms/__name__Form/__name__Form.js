@@ -29,10 +29,8 @@ export class <%= pascalEntityName %> extends React.Component {
   }
 }
 
-<%= pascalEntityName %> = reduxForm({
+export default reduxForm({
   form: '<%= pascalEntityName %>',
   fields,
   validate
 })(<%= pascalEntityName %>);
-
-export default <%= pascalEntityName %>;

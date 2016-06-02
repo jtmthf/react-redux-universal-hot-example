@@ -5,9 +5,9 @@ module.exports = {
 
   fileMapTokens() {
     return {
-      __smart__: (options) => {
-        return options.settings.getSetting('smartPath');
-      }
+      __smart__: (options) => (
+        options.settings.getSetting('smartPath')
+      )
     };
   }
 };

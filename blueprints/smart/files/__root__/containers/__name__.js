@@ -4,22 +4,19 @@ import { connect } from 'react-redux';
 type Props = {
 
 }
-export class <%= pascalEntityName %> extends React.Component {
-  props: Props;
 
-  render() {
-    return (
-      <div></div>
-    );
-  }
+export function <%= pascalEntityName %>(props: Props) {
+  return (
+    <div></div>
+  );
 }
 
-const mapStateToProps = (state) => { // eslint-disable-line no-unused-vars
-  return {};
-};
-const mapDispatchToProps = (dispatch) => { // eslint-disable-line no-unused-vars
-  return {};
-};
+const mapStateToProps = (state) => (
+  {}
+);
+const mapDispatchToProps = (dispatch) => (
+  {}
+);
 
 export default connect(
   mapStateToProps,

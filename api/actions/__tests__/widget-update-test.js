@@ -1,81 +1,72 @@
-import {expect} from 'chai';
+import { expect } from 'chai';
 import update from '../widget/update';
 import * as load from '../widget/load';
 import sinon from 'sinon';
 
 describe('widget update', () => {
-  afterEach(()=> {
+  afterEach(() => {
     if ('restore' in Math.random) {
       Math.random.restore(); // reset the Math.random fixture
     }
   });
 
   describe('randomly successful', () => {
-    const widgets = [{}, {id: 2, color: 'Red'}];
+    const widgets = [{}, { id: 2, color: 'Red' }];
 
-    beforeEach(()=> {
+    beforeEach(() => {
       sinon.stub(Math, 'random').returns(0.3);
     });
 
-    afterEach(()=> {
+    afterEach(() => {
       if ('restore' in load.default) {
         load.default.restore();
       }
     });
 
-    it('does not accept green widgets', () => {
-      sinon.stub(load, 'default').returns(new Promise((resolve) => {
+    it('does not accept green widgets', async () => {
+      sinon.stub(load, 'default').returns(new Promise(resolve => {
         resolve(widgets);
       }));
-      return update({session: {}, body: {color: 'Green'}}).
-      then(
-        ()=> {
-        },
-        (err)=> {
-          expect(err.color).to.equal('We do not accept green widgets');
-        });
+      try {
+        await update({ session: {}, body: { color: 'Green' } });
+      } catch (err) {
+        expect(err.color).to.equal('We do not accept green widgets');
+      }
     });
 
-    it('fails to load widgets', () => {
+    it('fails to load widgets', async () => {
       sinon.stub(load, 'default').returns(new Promise((resolve, reject) => {
         reject('Widget fail to load.');
       }));
-      return update({session: {}, body: {color: 'Blue'}}).
-      then(
-        ()=> {
-        },
-        (err)=> {
-          expect(err).to.equal('Widget fail to load.');
-        });
+      try {
+        await update({ session: {}, body: { color: 'Blue' } });
+      } catch (err) {
+        expect(err).to.equal('Widget fail to load.');
+      }
     });
 
-    it('updates a widget', () => {
-      sinon.stub(load, 'default').returns(new Promise((resolve) => {
+    it('updates a widget', async () => {
+      sinon.stub(load, 'default').returns(new Promise(resolve => {
         resolve(widgets);
       }));
-      const widget = {id: 2, color: 'Blue'};
-      return update({session: {}, body: widget}).
-      then(
-        (res)=> {
-          expect(res).to.deep.equal(widget);
-          expect(widgets[1]).to.deep.equal(widget);
-        });
+      const widget = { id: 2, color: 'Blue' };
+      const res = await update({ session: {}, body: widget });
+      expect(res).to.deep.equal(widget);
+      expect(widgets[1]).to.deep.equal(widget);
     });
   });
 
   describe('randomly unsuccessful', () => {
-    beforeEach(()=> {
+    beforeEach(() => {
       sinon.stub(Math, 'random').returns(0.1);
     });
 
-    it('rejects the call in 20% of the time', () => {
-      return update().
-      then(
-        ()=> {
-        },
-        (err)=> {
-          expect(err).to.equal('Oh no! Widget save fails 20% of the time. Try again.');
-        });
+    it('rejects the call in 20% of the time', async () => {
+      try {
+        await update();
+      } catch (err) {
+        expect(err).to.equal('Oh no! Widget save fails 20% of the time. Try again.');
+      }
     });
   });
 });

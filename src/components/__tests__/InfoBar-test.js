@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {renderIntoDocument} from 'react-addons-test-utils';
-import { expect} from 'chai';
+import { renderIntoDocument } from 'react-addons-test-utils';
+import { expect } from 'chai';
 import { InfoBar } from 'components';
 
 describe('InfoBar', () => {
@@ -10,13 +10,11 @@ describe('InfoBar', () => {
     time: Date.now()
   };
   const renderer = renderIntoDocument(
-    <InfoBar info={data}/>
+    <InfoBar info={data} />
   );
   const dom = ReactDOM.findDOMNode(renderer);
 
-  it('should render correctly', () => {
-    return expect(renderer).to.be.ok;
-  });
+  it('should render correctly', () => expect(renderer).to.be.ok);
 
   it('should render with correct value', () => {
     const text = dom.getElementsByTagName('strong')[0].textContent;
