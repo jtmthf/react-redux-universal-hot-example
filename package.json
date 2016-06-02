@@ -30,7 +30,7 @@
     "start-prod-api": "better-npm-run start-prod-api",
     "build": "rimraf bin/api bin/src && better-npm-run build && better-npm-run build:server && better-npm-run build:api",
     "postinstall": "npm run build",
-    "lint": "eslint -c .eslintrc src api blueprints",
+    "lint": "eslint src api blueprints",
     "lint-fix": "npm run lint -- --fix",
     "start-dev": "better-npm-run start-dev",
     "start-dev-api": "better-npm-run start-dev-api",
